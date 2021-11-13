@@ -30,7 +30,6 @@ const AllCostumers = () => {
                 </div>
                 )
           })}
-            <div className="users__right">shadi</div>
       </div>
     )
 }

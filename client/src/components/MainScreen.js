@@ -5,7 +5,8 @@ import "./mainPage.css";
 export const MainScreen =()=>{
     return(
         <div className="div-home">
-             <section id="about-info" className="bg-light py-3">
+        asdasdasdasd
+             {/* <section id="about-info" className="bg-light py-3">
     <div className="container">
       <div className="info-left">
         <h1 className="l-heading"><span className="text-primary">Welcome to</span> Raht Alena Bank </h1>
@@ -30,7 +31,8 @@ export const MainScreen =()=>{
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi quibusdam, dolorum maxime cum numquam quisquam, deleniti eum incidunt, velit non consectetur. Facere, ipsa maxime, ullam id amet odio laboriosam sit iusto tempore fugit exercitationem, a dolore quo maiores nisi!</p>
         </div>
     </div>
-  </section> 
+  </section>  */}
+  shadi
         </div>
     )
 }
