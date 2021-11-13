@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Shadi Rada",
+        "email": "shakkyr@gmail.com",
+        "firstDeposit": 5000,
+        "accountNumber": 143111,
+        "id": 1111
+    },
+    {
+        "name": "Shadi Rada",
+        "email": "shakkyr@gmail.com",
+        "firstDeposit": 5000,
+        "accountNumber": 143222,
+        "id": 2222
+    },
+    {
+        "name": "Shadi Rada",
+        "email": "shakkyr@gmail.com",
+        "firstDeposit": 5000,
+        "accountNumber": 143333,
+        "id": 3333
+    },
+    {
+        "name": "Shadi Rada",
+        "email": "shakkyr@gmail.com",
+        "firstDeposit": 5000,
+        "accountNumber": 143444,
+        "id": 4444
+    },
+    {
+        "name": "Shadi Rada",
+        "email": "shakkyr@gmail.com",
+        "firstDeposit": 5000,
+        "accountNumber": 143555,
+        "id": 5555
+    },
+    {
+        "name": "kareem",
+        "email": "asdad@fsa",
+        "firstDeposit": 50,
+        "accountNumber": 143666,
+        "id": 6666
+    }
+]
