@@ -48,12 +48,18 @@ app.post('/', (req, res) => {
         return res.status(404).send('user exists')
     }
 
+    let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
+
     const item = {
         name: req.body.name,
         email: req.body.email,
         firstDeposit: parseFloat(req.body.firstDeposit),
         accountNumber:  parseFloat(req.body.accountNumber),
         id: parseFloat(req.body.id),
+        joinedIn : dateTime
 
     }
     buffer = [...buffer, item]
@@ -62,35 +68,57 @@ app.post('/', (req, res) => {
     return res.status(201).json(item)
 })
 
+//! ========================= transfers between users =================
+app.put('/', (req, res) => {
+    let buffer = JSON.parse(fs.readFileSync('./bank.json').toString())
+// ========================= time ====================
+            let today = new Date();
+            let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            let dateTime = date+' '+time;
+    //  ============================================================       
+            const {deposit,withdraw,transfer} = req.body;
+            let user = buffer.find(usr=>{
+                return usr.accountNumber === req.body.fromWho
+            })
 
-// app.put('/:email', (req, res) => {
-//     let buffer = JSON.parse(fs.readFileSync('./bank.json').toString())
-//     const users = buffer.find(itm => itm.email === req.params.email);
-//     if (users) {
-//         users.money = parseFloat(req.body.money);
-//         fs.writeFileSync('./bank.json', JSON.stringify(buffer))
-//         res.status(200).send(users)
-//     }
-//     else {
-//         const item = {
-//             name: req.body.name,
-//             email: req.body.email,
-//             firstDeposit: parseFloat(req.body.firstDeposit),
-//             accountNumber:  parseFloat(req.body.accountNumber),
-//             id: parseFloat(req.body.id),
-//         }
-//         buffer = [...buffer, item]
-//         fs.writeFileSync('./bank.json', JSON.stringify(buffer))
-//         res.status(201).json(item)
-//     }
+            if(!user) {
+                return res.status(400).json({error: 'user is not exist'})
+            }
+//! ======================= deposit and withdraw =================
+            let inMoney = (deposit === '' ? 0 : parseFloat(deposit))
+            let outMoney = (withdraw === '' ? 0 : parseFloat(withdraw))
+            if(outMoney > user.firstDeposit){
+                return res.status(400).json({error: 'no enough money'})
+            }
+            user.firstDeposit = user.firstDeposit + inMoney - outMoney
+            
 
-// })
+      
 
 
 
+        //     "name": "samer",
+        // "email": "samer@/com",
+        // "firstDeposit": 1000,
+        // "accountNumber": 143444,
+        // "id": 30444,
+        // "joinedIn": "2021-11-13 18:7:25"
+            
+        const item = {
+            fromWho:  parseFloat(req.body.fromWho),
+            transfer:  parseFloat(req.body.transfer),
+            toWho:  parseFloat(req.body.toWho),
+            transictionTime : dateTime
+        }
+        fs.writeFileSync('./trans.json', JSON.stringify(item))
+        fs.writeFileSync('./bank.json', JSON.stringify(buffer))
+    
+               return res.status(200).json({success: 'Item updated successfully'})
 
 
-
+            
+    })
 
 
 app.listen(5000, () => {

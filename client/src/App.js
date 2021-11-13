@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import AllCostumers from './components/AllCostumers';
 import AddingUser from './components/AddingUser';
 import MainScreen from './components/MainScreen';
@@ -9,27 +9,25 @@ import Transections from './components/Transections';
 
 const App = ()=> {
   return (
-    <BrowserRouter>
-    <Switch>
-      <Route path="/">
-        <MainScreen />
-      </Route>
-      <Route path="/AllCostumers">
-        <AllCostumers />
-      </Route>
-      <Route path="/userActivities">
-        <AddingUser />
-      </Route>
-      <Route path="/Transections">
-        <Transections />
-      </Route>
-    </Switch>
-    {/* <SomeComponentOrElement>
-      <Link to="/">Home</Link>
-      <Link to="/something">Something</Link>
-      <Link to="/somethingelse">Something Else</Link>
-    </SomeComponentOrElement> */}
-  </BrowserRouter>
+    <Router>
+    <div className="list">
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="AllCostumers">List of Costumers</Link></li>
+            <li><Link to="AddingUser">Add Costumer</Link></li>
+            <li><Link to="Transections">Transections</Link></li>
+          </ul>
+        </div>
+    <Routes>
+      <Route path="/" element={<MainScreen />}/>
+      <Route path="/AllCostumers" element={<AllCostumers />}/>
+      <Route path="/AddingUser" element={<AddingUser />}/>
+      <Route path="/Transections/:accountNumber" element={<Transections />}/>
+
+  
+      
+    </Routes>
+  </Router>
 )
 }
 

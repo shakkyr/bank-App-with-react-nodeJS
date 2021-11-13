@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios';
+import BankingButtons from './BankingButtons';
 
 const UserInfo = ({accountNumber , name}) => {
+    // eslint-disable-next-line no-unused-vars
     const [user, setUser] = React.useState([]);
     const [trans, setTrans] = React.useState(false);
-
 
 
     const fetchUser = () =>{
@@ -17,8 +18,8 @@ const UserInfo = ({accountNumber , name}) => {
 
     return (
         <div>
-            <input type="button" value={accountNumber} name={name} onClick={fetchUser} />
-            <div>{!trans ? '' :"mays"}</div>
+            <input className="account__number" type="button" value={accountNumber} name={name} onClick={fetchUser} />
+            <div>{!trans ? '' : <BankingButtons accountNumber={accountNumber} />   }</div>
         </div>
     )
 }

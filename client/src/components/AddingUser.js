@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom';
+const alertMessage = document.querySelector('.alertMessage');
 const AddingUser = ()=> {
         const [user, setUser] = React.useState({
             name:'',
@@ -11,6 +12,7 @@ const AddingUser = ()=> {
             accountNumber:'',
 
         })
+        
 
         const inputHandler = (e)=>{
             setUser({
@@ -22,10 +24,17 @@ const AddingUser = ()=> {
 
         
         const addNewCostumer = async ()=>{
-            await axios.post(`http://localhost:5000/`,user).then()
+            try {
+            await axios.post(`http://localhost:5000/`,user)
+            alertMessage.innerHTML= "<span style='color:green'>Adding Account Sucseed</span>";
+            <Link to="/AllCostumers">List of Costumers</Link>
+            }
+            catch (e){
+                alertMessage.innerHTML= "<span style='color:red'>Account number already exist!!!</span>";
+            }
            }
     return (
-        <div>
+        <div className="add__user">
         <p>New bank customer</p>
                <div><input type="text" onChange={inputHandler} name="name"  value={user.name} placeholder='name'/></div>
                <div><input type="text" onChange={inputHandler} name="id"  value={user.id} placeholder='id'/></div>
@@ -34,6 +43,7 @@ const AddingUser = ()=> {
                <div><input type="number" onChange={inputHandler} name="firstDeposit"  value={user.firstDeposit} placeholder='first deposit'/></div>
                <div><input type="number" onChange={inputHandler} name="accountNumber"  value={user.accountNumber} placeholder='Account Number'/></div>
                <div><input type="button" onClick={addNewCostumer} value='add'/></div>
+               <div className="alertMessage"></div>
         </div>
     )
 }
