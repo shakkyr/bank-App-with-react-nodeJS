@@ -1,1 +1,34 @@
-[{"name":"Shadi Rada","email":"shakkyr@gmail.com","firstDeposit":6000,"accountNumber":143111,"id":30111,"joinedIn":"2021-11-13 17:59:19"},{"name":"Asad","email":"asad@.vom","firstDeposit":650,"accountNumber":143222,"id":30222,"joinedIn":"2021-11-13 18:0:43"},{"name":"kareem","email":"kareem@.com","firstDeposit":620,"accountNumber":143333,"id":30333,"joinedIn":"2021-11-13 18:1:41"},{"name":"samer","email":"samer@/com","firstDeposit":1000,"accountNumber":143444,"id":30444,"joinedIn":"2021-11-13 18:7:25"}]
+[
+    {
+        "name": "Shadi Rada",
+        "email": "shakkyr@gmail.com",
+        "firstDeposit": 6210,
+        "accountNumber": 143111,
+        "id": 30111,
+        "joinedIn": "2021-11-13 17:59:19"
+    },
+    {
+        "name": "Asad",
+        "email": "asad@.vom",
+        "firstDeposit": 1100,
+        "accountNumber": 143222,
+        "id": 30222,
+        "joinedIn": "2021-11-13 18:0:43"
+    },
+    {
+        "name": "kareem",
+        "email": "kareem@.com",
+        "firstDeposit": 1460,
+        "accountNumber": 143333,
+        "id": 30333,
+        "joinedIn": "2021-11-13 18:1:41"
+    },
+    {
+        "name": "samer",
+        "email": "samer@/com",
+        "firstDeposit": 1060,
+        "accountNumber": 143444,
+        "id": 30444,
+        "joinedIn": "2021-11-13 18:7:25"
+    }
+]

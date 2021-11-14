@@ -25,6 +25,15 @@ app.get('/', (req, res) => {
     res.status(200).json(buffer)
     // console.log(buffer);
 })
+//! ===================== get all transes list =================
+app.get('/:trans', (req, res) => {
+    if (!fs.existsSync('./trans.json')) {
+        fs.writeFileSync('./trans.json', '[]')
+    }
+    const buffer = JSON.parse(fs.readFileSync('./trans.json').toString())
+    res.status(200).json(buffer)
+    // console.log(buffer);
+})
 
 //! ======================= get individual user data ================
 app.get('/:account', (req,res)=>{
@@ -82,37 +91,47 @@ app.put('/', (req, res) => {
                 return usr.accountNumber === req.body.fromWho
             })
 
+            let user2 = buffer.find(usr=>{
+                return usr.accountNumber == req.body.toWho
+            })
+
             if(!user) {
                 return res.status(400).json({error: 'user is not exist'})
             }
 //! ======================= deposit and withdraw =================
+            let cridet = -1000;
             let inMoney = (deposit === '' ? 0 : parseFloat(deposit))
             let outMoney = (withdraw === '' ? 0 : parseFloat(withdraw))
-            if(outMoney > user.firstDeposit){
+            let transferMoney = (transfer === '' ? 0 : parseFloat(transfer))
+            if(outMoney > user.firstDeposit + inMoney && transferMoney > (user.firstDeposit + inMoney + cridet )  ){
                 return res.status(400).json({error: 'no enough money'})
             }
-            user.firstDeposit = user.firstDeposit + inMoney - outMoney
+            user.firstDeposit = user.firstDeposit + inMoney - outMoney - transferMoney
             
+            if(transferMoney != 0) {
+                user2.firstDeposit =  user2.firstDeposit + transferMoney
+            }
 
       
 
 
 
-        //     "name": "samer",
-        // "email": "samer@/com",
-        // "firstDeposit": 1000,
-        // "accountNumber": 143444,
-        // "id": 30444,
-        // "joinedIn": "2021-11-13 18:7:25"
-            
+  
         const item = {
             fromWho:  parseFloat(req.body.fromWho),
             transfer:  parseFloat(req.body.transfer),
             toWho:  parseFloat(req.body.toWho),
             transictionTime : dateTime
         }
-        fs.writeFileSync('./trans.json', JSON.stringify(item))
         fs.writeFileSync('./bank.json', JSON.stringify(buffer))
+        
+        if (!fs.existsSync('./trans.json')) {
+            fs.writeFileSync('./trans.json', '[]')
+        }
+
+        let transes = JSON.parse(fs.readFileSync('./trans.json').toString())
+        transes = [...transes, item]
+        fs.writeFileSync('./trans.json', JSON.stringify(transes))
     
                return res.status(200).json({success: 'Item updated successfully'})
 

@@ -22,7 +22,7 @@ const App = ()=> {
       <Route path="/" element={<MainScreen />}/>
       <Route path="/AllCostumers" element={<AllCostumers />}/>
       <Route path="/AddingUser" element={<AddingUser />}/>
-      <Route path="/Transections/:accountNumber" element={<Transections />}/>
+      <Route path="/Transections" element={<Transections />}/>
 
   
       

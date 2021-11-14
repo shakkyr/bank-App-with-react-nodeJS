@@ -27,7 +27,7 @@ const BankingButtons = ({accountNumber}) => {
     
         try {
             await axios.put(`http://localhost:5000/`,amount)
-           alert(`transfared money sucssesfuly to account ${accountNumber}`)
+           alert(`transfared money sucssesfuly in account ${accountNumber}`)
           
             }
             catch (e){

@@ -23,7 +23,7 @@ const AllCostumers = () => {
     <div className="users__container">
       {costumers.map((usr) => {
         return (
-          <div className="users__left">
+          <div className="users__left" key ={usr.accountNumber}>
             <h5>
               Account Number:{" "}
               <UserInfo
