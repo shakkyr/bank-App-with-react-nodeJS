@@ -1,5 +1,5 @@
 # Simple bank app with  (React and NodeJs)
-[![An open source project from Me](https://github.com/shakkyr/bank-App-with-react-nodeJS/blob/main/home.png)]
+[![An open source project from Me]
 
 ![image](https://github.com/shakkyr/bank-App-with-react-nodeJS/blob/main/home.png)
 ![image](https://github.com/shakkyr/bank-App-with-react-nodeJS/blob/main/users.png)
